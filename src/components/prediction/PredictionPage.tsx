@@ -11,6 +11,8 @@ import { ErrorResponse } from "./DownloadData"
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { DefaultService } from "../../httpfunctions";
+import { DataStoreState } from "../../schema/dataStoreSchema";
+import { useRecoilValue } from "recoil";
 
 const defaultPeriod = {
   startMonth: "2023-04",
@@ -34,6 +36,11 @@ const PredictionPage = () => {
   const [zipResult, setZipResult] = useState<any>(undefined);
 
   const [startDownload, setStartDownload] = useState<{downloadLocal : boolean, startDownlaod : boolean}>({downloadLocal : true, startDownlaod : false});
+
+  const dataStoreConfig = useRecoilValue(DataStoreState)
+
+
+  console.log(dataStoreConfig)
 
   const isValid = Boolean(
     predictionTarget &&

@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "@dhis2/app-runtime": "^3.10.4",
-    "@dhis2/ui": "^9.8.0",
+    "@dhis2/ui": "^9.4.4",
+    "@dhis2/app-service-datastore": "^1.0.0-beta.3",
     "@types/file-saver": "^2.0.7",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.7",
@@ -27,6 +28,7 @@
     "jszip": "^3.10.1",
     "openapi-typescript-codegen": "^0.29.0",
     "react-dropzone": "^14.2.3",
-    "react-router-dom": "^6.23.0"
+    "react-router-dom": "^6.23.0",
+    "recoil": "^0.7.7"
   }
 }
