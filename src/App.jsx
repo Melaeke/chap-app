@@ -7,6 +7,7 @@ import SettingsPage from "./components/settings/SettingsPage";
 import ErrorPage from "./components/ErrorPage";
 import StatusPage from "./components/StatusPage";
 import { OpenAPI } from './httpfunctions';
+import ModelConfigurationPage from "./components/modelConfigurations/ModelConfigurationPage";
 
 const router = createHashRouter([
   {
@@ -30,6 +31,10 @@ const router = createHashRouter([
         path: "status",
         element: <StatusPage />,
       },
+      {
+        path: "modelConfigurations",
+        element: <ModelConfigurationPage />
+      }
     ],
   },
 ]);
@@ -38,10 +43,10 @@ const App = () => {
   OpenAPI.BASE = 'http://localhost:8000'
 
   return (
-    <>  
+    <>
       <RouterProvider router={router}></RouterProvider>;
     </>
   )
-} 
+}
 
 export default App;
