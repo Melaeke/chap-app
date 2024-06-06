@@ -8,6 +8,8 @@ export const appPages = [
   { path: "/status", name: "2 | Upload data to CHAP" },
   { path: "/results", name: "3 | See prediction" },
   { path: "/settings", name: "Settings" },
+  { path: "/modelConfigurations", name: "Model configurations" },
+  { path: "/configurationSettings", name: "Configuration settings" }
 ];
 
 const Root = () => {
