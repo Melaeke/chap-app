@@ -9,7 +9,7 @@ const InputFieldCustom = ({ title, label, value, onChange }: any) => {
       <InputField
         placeholder={label}
         value={value}
-        onChange={onChange}
+        onChange={(e)=> onChange(e.value)}
       />
     </div>
   );
