@@ -7,6 +7,12 @@ import OrgUnits from '../prediction/OrgUnits';
 import OrgUnitLevel from '../prediction/OrgUnitLevel';
 import { Button, IconArrowRight24, IconDownload24, NoticeBox } from '@dhis2/ui';
 import InputFieldCustom from '../prediction/InputFieldCustom';
+import MonthlyPeriodSelect from '../prediction/MonthlyPeriodSelect';
+
+const defaultPeriod = {
+    startMonth: "2023-04",
+    endMonth: "2024-03",
+  };
 
 function ConfigurationSettingsPage() {
     const [predictionTarget, setPredictionTarget] = useState(/*{displayName: 'IDSR Malaria', id: 'vq2qO3eTrNi'}*/);
@@ -15,8 +21,7 @@ function ConfigurationSettingsPage() {
     const [namePrediction, setnamePrediction] = useState("")
     const [descriptionPrediction, setdescriptionPrediction] = useState("")
     const [model, setmodel] = useState()
-
-
+    const [period, setPeriod] = useState(defaultPeriod);
 
     //checks that all selected orgUnits are on the same level
     function orgUnitsSelectedIsValid() {
@@ -40,20 +45,20 @@ function ConfigurationSettingsPage() {
             <InputFieldCustom
                 title={i18n.t("Name of the prediction")}
                 label={i18n.t("Name")}
-                value={""}
-                onChange={() => { }}
+                value={namePrediction}
+                onChange={setnamePrediction}
             />
             <InputFieldCustom
                 title={i18n.t("Description of the prediction")}
                 label={i18n.t("Description")}
-                value={""}
-                onChange={() => { }}
+                value={descriptionPrediction}
+                onChange={setdescriptionPrediction}
             />
             <DataElement
                 title={i18n.t("Models of the prediction")}
                 label={i18n.t("Select the model")}
-                selected={{}}
-                onChange={() => { }}
+                selected={model}
+                onChange={setmodel}
             />
             <DataElement
                 title={i18n.t("Prediction target")}
@@ -68,8 +73,10 @@ function ConfigurationSettingsPage() {
                 onChange={setOrgUnitLevel}
             />
 
+            <MonthlyPeriodSelect period={period} onChange={setPeriod} />
+
             <div className={styles.notice}>
-                <NoticeBox warning title={`The fields bellow is related to the ${model ?? "model"}`}>
+                <NoticeBox warning title={`The fields bellow is related to the ${model?.displayName + " model" ?? "model"}`}>
                     Fill the fields bellow to be able to predict
                 </NoticeBox>
             </div>
