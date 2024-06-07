@@ -9,7 +9,7 @@ export const appPages = [
   { path: "/results", name: "3 | See prediction" },
   { path: "/settings", name: "Settings" },
   { path: "/modelConfigurations", name: "Model configurations" },
-  { path: "/configurationSettings", name: "Configuration settings" }
+  { path: "/configurations-settings", name: "Configuration settings" }
 ];
 
 const Root = () => {
