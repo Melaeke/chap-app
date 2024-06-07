@@ -10,6 +10,7 @@ import ErrorPage from "./components/ErrorPage";
 import StatusPage from "./components/StatusPage";
 import { OpenAPI } from './httpfunctions';
 import ConfigurationSettingsPage from "./components/ConfigurationSettingsPage/ConfigurationSettingsPage";
+import ModelConfigurationPage from "./components/modelConfigurations/ModelConfigurationPage";
 import { CenteredContent, CircularLoader } from "@dhis2/ui";
 import Initializer from "./app/Initializer";
 
@@ -36,8 +37,12 @@ const router = createHashRouter([
         element: <StatusPage />,
       },
       {
-        path: "configurations-settings",
+        path: "prediction-settings",
         element: <ConfigurationSettingsPage />
+      },
+      {
+        path: "models-settings",
+        element: <ModelConfigurationPage />
       }
     ],
   },

@@ -8,29 +8,13 @@ interface Item {
     name: string;
     code: string;
     description: string;
-    valueType: string;
+    resouceType: string;
 }
 
 const allValueTypes = [
     {
-        id: "number",
-        value: "Number",
-    },
-    {
-        id: "Text",
-        value: "Text",
-    },
-    {
-        id: "POSITIVE_INTEGER",
-        value: "Positive integer",
-    },
-    {
-        id: "phoneNumber",
-        value: "Phone number",
-    },
-    {
-        id: "GPS",
-        value: "GPS",
+        id: "DATAELEMENT",
+        value: "DATAELEMENT",
     }
 ]
 
@@ -41,13 +25,6 @@ const DataInput = ({ label, title, list, onChange }: any) => {
 
     return (
         <div className={styles.container}>
-            <Button secondary
-                onClick={() => {
-                    let temp = [...list]
-                    temp.push({ name: "", code: "", description: "", valuetype: "" })
-                    onChange(temp)
-                }}
-            >{i18n.t("Add New")}</Button>
             <h2>{title}</h2>
 
             <span>{label}</span>
@@ -59,9 +36,6 @@ const DataInput = ({ label, title, list, onChange }: any) => {
                         </DataTableColumnHeader>
 
                         <DataTableColumnHeader>
-                            {i18n.t("Code")}
-                        </DataTableColumnHeader>
-                        <DataTableColumnHeader>
                             {i18n.t("Description")}
                         </DataTableColumnHeader>
 
@@ -69,10 +43,7 @@ const DataInput = ({ label, title, list, onChange }: any) => {
                             {i18n.t("Value type")}
                         </DataTableColumnHeader>
                         <DataTableColumnHeader>
-                            {i18n.t("Edit")}
-                        </DataTableColumnHeader>
-                        <DataTableColumnHeader>
-                            {i18n.t("Delete")}
+                            {i18n.t("Actions")}
                         </DataTableColumnHeader>
                     </DataTableRow>
                 </TableHead>
@@ -93,15 +64,6 @@ const DataInput = ({ label, title, list, onChange }: any) => {
                                     </DataTableCell>
                                     <DataTableCell>
                                         <InputField disabled={index !== editableIndex}
-                                            value={item.code}
-                                            onChange={e => {
-                                                let temp = [...list]
-                                                temp[index].code = e.value
-                                                onChange(temp)
-                                            }} />
-                                    </DataTableCell>
-                                    <DataTableCell>
-                                        <InputField disabled={index !== editableIndex}
                                             value={item.description}
                                             onChange={e => {
                                                 let temp = [...list]
@@ -113,7 +75,7 @@ const DataInput = ({ label, title, list, onChange }: any) => {
                                         <SingleSelectField
                                             disabled={index !== editableIndex}
                                             placeholder={i18n.t("Select the value type")}
-                                            selected={item.valueType}
+                                            selected={item.resouceType}
                                             onChange={(e) => {
                                                 let temp = [...list]
                                                 temp[index].valueType = e.selected
@@ -127,9 +89,7 @@ const DataInput = ({ label, title, list, onChange }: any) => {
                                     </DataTableCell>
                                     <DataTableCell>
                                         <Button onClick={e => setEditableIndex(index)}>Edit</Button>
-                                    </DataTableCell>
-                                    <DataTableCell>
-                                        <Button onClick={e => {
+                                        <Button destructive onClick={e => {
                                             let temp = [...list]
                                             temp.splice(index, 1)
                                             onChange(temp)
